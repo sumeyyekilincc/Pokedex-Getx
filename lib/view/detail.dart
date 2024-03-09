@@ -54,7 +54,7 @@ class DetailPage extends StatelessWidget {
                             : Image.network(
                                 detailController.selectedPoke?.img ??
                                     R.drawable.img1.noImage,
-                                scale: 0.5,
+                                scale: 0.7,
                               ),
                       ),
                     ],
@@ -62,146 +62,164 @@ class DetailPage extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 4,
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: R.appColor.clr.greyColor,
-                            offset: const Offset(0, 1),
-                            spreadRadius: 5,
-                            blurRadius: 18)
-                      ],
-                      color: R.appColor.clr.redColor,
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Text.rich(
-                            TextSpan(
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    physics: const ScrollPhysics(),
+                    shrinkWrap: true,
+                    itemExtent: MediaQuery.of(context).size.height / 2,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          padding: const EdgeInsets.only(left: 20, top: 20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: R.appColor.clr.greyColor,
+                                offset: const Offset(0, 1),
+                                spreadRadius: 5,
+                                blurRadius: 18,
+                              ),
+                            ],
+                            color: R.appColor.clr.redColor,
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                TextSpan(
-                                  text: detailController.selectedPoke?.name
-                                          .toString() ??
-                                      "--",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailHeaderSize,
-                                    letterSpacing: 3,
-                                    color: R.appColor.clr.neutralColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nType: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController.selectedPoke?.type
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nCandy: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController.selectedPoke?.candy
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nHeight: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController.selectedPoke?.height
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nWeight: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController.selectedPoke?.weight
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nWeaknesses: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController
-                                      .selectedPoke?.weaknesses
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: "\nEgg: ",
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: R.appColor.clr.neutralColor,
-                                  ),
-                                ),
-                                TextSpan(
-                                  text: detailController.selectedPoke?.egg
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: R.dimens.detailSize,
-                                    color: R.appColor.clr.neutralColor,
+                                Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: detailController
+                                                .selectedPoke?.name
+                                                .toString() ??
+                                            "--",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailHeaderSize,
+                                          letterSpacing: 3,
+                                          color: R.appColor.clr.neutralColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nType: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController
+                                            .selectedPoke?.type
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nCandy: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController
+                                            .selectedPoke?.candy
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nHeight: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController
+                                            .selectedPoke?.height
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nWeight: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController
+                                            .selectedPoke?.weight
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nWeaknesses: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController
+                                            .selectedPoke?.weaknesses
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: "\nEgg: ",
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          fontWeight: FontWeight.bold,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: detailController.selectedPoke?.egg
+                                            .toString(),
+                                        style: TextStyle(
+                                          fontSize: R.dimens.detailSize,
+                                          color: R.appColor.clr.neutralColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ],

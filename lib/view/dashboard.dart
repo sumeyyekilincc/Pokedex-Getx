@@ -123,14 +123,19 @@ class Dashboard extends StatelessWidget {
                                             },
                                           ),
                                         ),
-                                        Text(
-                                          allPokeController.allPokeModal
-                                                  ?.pokemon?[index].name ??
-                                              "**",
-                                          style: TextStyle(
-                                            color: R.appColor.clr.defaultColor,
-                                            fontSize:
-                                                R.dimens.dashboardDetailSize,
+                                        Expanded(
+                                          child: Text(
+                                            allPokeController.allPokeModal
+                                                    ?.pokemon?[index].name ??
+                                                "**",
+                                            style: TextStyle(
+                                              color:
+                                                  R.appColor.clr.defaultColor,
+                                              fontSize:
+                                                  R.dimens.dashboardDetailSize,
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
                                       ],
